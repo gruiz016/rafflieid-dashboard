@@ -72,5 +72,6 @@ body {
 }
 
 .product-img {
-    height: 10%;
+    height: 5rem;
+    width: 5rem;
 }
