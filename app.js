@@ -77,7 +77,7 @@ const getAll = async () => {
                 <td>${count.data.count[0]}/${i.slots}</td>
                 <td>${i.is_active}</td>
                 <td><button class="btn btn-primary" data-id="${i.id}" id="disable">Delete</button></td>
-                <td class="winner"><button class="btn btn-secondary" data-id="${i.id}" id="reveal">Reveal</button></td>
+                <td class="winner-${i.id}"><button class="btn btn-secondary" data-id="${i.id}" id="reveal">Reveal</button></td>
             </tr>
             `
             $raffleTable.append($item);
@@ -104,8 +104,8 @@ $('body').on('click', '#reveal', async (evt) => {
     const prodId = $(evt.target).attr("data-id");
     try {
         const response = await axios.get(`${API}/raffles/winner/${prodId}`);
-        $('.winner').empty()
-        $('.winner').text(`${response.data.winner}`)
+        $(`.winner-${prodId}`).empty()
+        $(`.winner-${prodId}`).text(`${response.data.winner}`)
     } catch (e) {
         alert('Something went wrong')
     }
